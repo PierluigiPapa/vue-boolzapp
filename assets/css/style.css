@@ -158,6 +158,10 @@ li {
     overflow: scroll;
 }
 
+.list-users .user:hover {
+    background-color: #e9ebeb;
+}
+
 .list-users .user {
     padding: 10px;
     cursor: pointer;
