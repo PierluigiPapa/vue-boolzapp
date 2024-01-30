@@ -4,6 +4,10 @@
     box-sizing: border-box;
 }
 
+li {
+    list-style: none;
+}
+
 /* // SECTION SIDEBAR // */
 .main-wrapper {
     height: 100vh;
@@ -109,3 +113,79 @@
 }
 
 /* // SECTION NOTIFICATIONS // */
+
+/* // SECTION INPUT SEARCH //  */
+.input-search {
+    height: 50px;
+    background-color: #fafafa;
+    display: flex;
+    align-items: center;
+    padding-left: 10px;
+}
+
+.input-icon {
+    border-right: none;
+    padding: 4px 15px;
+}
+
+.fa-magnifying-glass {
+    font-size: 17px;
+    color: #bab9bb;
+}
+
+.input{
+    width: 90%;
+    margin-right: 10px;
+}
+
+.input input{
+    width: 100%;
+    padding: 5px 15px;
+    border: none;
+}
+/* // SECTION INPUT SEARCH //  */
+
+/* // SECTION LIST USERS // */
+.list-users {
+    height: calc(100% - 190px);
+    background-color: white;
+    overflow: scroll;
+}
+
+.list-users .user {
+    padding: 10px;
+    cursor: pointer;
+    border-bottom: 1px solid lightgray;
+    display: flex;
+    justify-content: space-between;
+}
+
+.col {
+    display: flex;
+    align-items: center;
+}
+
+.user-image img {
+    border-radius: 50px;
+    width: 70px;
+    height: 70px;
+    margin-left: 10px;
+}
+
+.text-users {
+    width: 70px;
+    height: 70px;    
+    margin-left: 10px;
+    margin-top: 10px;
+}
+
+.list-users li:last-child{
+    color: #bab9bb;
+    font-size: 13px;
+}
+
+.hour span {
+    font-size: 10px;
+    color: #bab9bb;
+}
+/* // SECTION LIST USERS // */
