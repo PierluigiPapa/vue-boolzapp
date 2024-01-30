@@ -61,14 +61,14 @@
                     <!--// SECTION LIST USERS // -->
                     <section class="list-users">
                         <div class="user">
-                            <div class="col">
+                            <div class="col" v-for="contact in contacts">
                                 <div class="user-image">
-                                    <img src="./assets/img/avatar_1.jpg" alt="">
+                                    <img :src="contact.avatar" alt="">
                                 </div>
 
                                 <ul class="text-users">
-                                    <li>Utente</li>
-                                    <li>Messaggio</li>
+                                    <li>{{contact.name}}</li>
+                                    <li>{{contact.messages[contact.messages.lenght-1].message}}</li>
                                 </ul>
                             </div>
 
