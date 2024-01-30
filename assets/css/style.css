@@ -89,7 +89,7 @@ li{
 
 /* // SECTION PROFILE USER AND ICON S // */
 .aside-image img,
-.users-list .user img,
+.list-users .user img,
 .contact-image img{
     border-radius: 50%;
     width: 50px;
