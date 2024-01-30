@@ -16,40 +16,40 @@
     <div id="app">
         <div class="main-wrapper">
             <main class="container">
-                <!-- // SECTION SIDEBAR //-->
+                <!-- // SECTION SIDEBAR // -->
                 <aside class="sidebar">
                     <!-- // SECTION PROFILE USER // -->
-                    <header class="header-user">
+                    <header class="d-flex space-between items-center">
                         <div class="aside-image">
-                            <img src="./assets/img/avatar_io.jpg" alt="">
-                            <span class="bold-user">Sofia</span>
+                            <img src = "assets/img/avatar_io.jpg" alt="avatar_io">
+                            <span class="bold">Sofia</span>
                         </div>
 
-                        <!--// SECTION ICONS // -->
+                        <!-- // SECTION ICONS // -->
                         <div class="aside-icons">
-                            <i class="fa-sharp fa-solid fa-circle-notch icons"></i>
-                            <i class="fa-solid fa-message icons"></i>
-                            <i class="fa-solid fa-ellipsis-vertical icons"></i>
+                            <i class="fa-sharp fa-solid fa-circle-notch pr-10"></i>
+                            <i class="fa-solid fa-message pr-10"></i>
+                            <i class="fa-solid fa-ellipsis-vertical pr-10"></i>
                         </div>
-                        <!--// SECTION ICONS // -->
+                        <!-- // SECTION ICONS // -->
                     </header>
                     <!-- // SECTION PROFILE USER // -->
-
-                    <!-- // SECTION NOTIFICATIONS // -->
-                    <div class="notifications">
+                    
+                    <!-- // SECTION NOTIFICATION USER // -->
+                    <div class="notifications d-flex items-center">
                         <div class="bell">
-                            <i class="fa-solid fa-bell-slash"></i>
+                            <i class="fa-solid fa-bell-slash ml-10"></i>
                         </div>
-                        <div class="text">
+                        <div class="notifications-text">
                             <span>Ricevi notifiche di nuovi messaggi</span>
                             <span>Attiva notifiche desktop</span>
                         </div>
                     </div>
-                    <!-- // SECTION NOTIFICATIONS // -->
+                    <!-- // SECTION NOTIFICATION USER // -->
 
                     <!-- // SECTION INPUT SEARCH // -->
-                    <div class="input-search">
-                        <div class="input-icon">
+                    <div class="input-search d-flex items-center pl-10">
+                        <div class="input-search-icon">
                             <i class="fa-solid fa-magnifying-glass"></i>
                         </div>
                         <div class="input">
@@ -57,23 +57,25 @@
                         </div>
                     </div>
                     <!-- // SECTION INPUT SEARCH // -->
-                    
-                    <!--// SECTION LIST USERS // -->
-                    <section class="list-users" v-for="contact in contacts">
-                        <div class="user">
-                            <div class="col">
-                                <div class="user-image">
-                                    <img :src="contact.avatar">
-                                </div>
 
-                                <ul class="text-users">
+                    <!-- // SECTION LIST USERS // -->
+                    <section class="list-users">
+                        <div
+                          class="user d-flex space-between"
+                          v-for= "(contact, userIndex) in contacts"
+                          @click="showContact(userIndex)">
+                            <div class="user-col d-flex items-center">
+                                <div class="user-image" >
+                                    <img :src = "contact.avatar">
+                                </div>
+                                <ul class="user-info ml-10">
                                     <li>{{contact.name}}</li>
-                                    <li>{{contact.messages[contact.messages.length - 1].message }}</li>
+                                    <li>{{contact.messages[contact.messages.length - 1].message }} </li>
                                 </ul>
                             </div>
-
+                        
                             <div class="hour">
-                                <span>15:48</span>
+                                <span>12:00</span>
                             </div>
                         </div>
                     </section>
@@ -81,42 +83,43 @@
                 </aside>
                 <!-- // SECTION SIDEBAR // -->
                 
-                <!-- // SECTION CHAT // -->
-                <div class="chat-container">
+
+                <!-- // SECTION MAIN CHAT // -->
+                <div class="chat">
                     <!-- // SECTION HEADER CHAT // -->
-                    <header class="header-chat chat">
-                        <div class="contact">
-                            <div class="image-contact img-flex">
-                                <img src="./assets/img/avatar_1.jpg" alt="">
-                                <ul class="user-info">
-                                    <li>Michele</li>
-                                    <li>Ultimo messaggio ore 12:00</li>
+                    <header class="d-flex space-between items-center">
+                        <div class="contact d-flex space-between">
+                            <div class="contact-image d-flex">
+                                <img :src = "contacts[index].avatar" alt="avatar_io">
+                                <ul class="pl-10">
+                                    <li>{{contacts[index].name}}</li>
+                                    <li>Ultimo accesso oggi alle 12:00</li>
                                 </ul>
                             </div>
-                        </div>
-                        <div class="contact-icons">
-                            <i class="fa-solid fa-magnifying-glass icons"></i>
-                            <i class="fa-solid fa-paperclip icons"></i>
-                            <i class="fa-solid fa-ellipsis-vertical icons"></i>
+
+                            <div class="contact-icons d-flex space-between items-center">
+                                <i class="fa-solid fa-magnifying-glass"></i>
+                                <i class="fa-solid fa-paperclip"></i>
+                                <i class="fa-solid fa-ellipsis-vertical pr-10"></i>
+                            </div>
+
                         </div>
                     </header>
                     <!-- // SECTION HEADER CHAT // -->
-
+                    
                     <!-- // SECTION CHAT // -->
                     <main class="chat-main">
-                        <div class="chat-messagges">
-                            <div class="msg-sent">
-                                <p>Hai portato a spasso il cane?</p>
-                            </div>
-
-                            <div class="msg-received">
-                                <p>Tutto fatto!</p>
+                        <div class="chat-messages d-flex flex-col">
+                            <div class="message"
+                            :class="contact.status" v-for="contact in contacts[index].messages">
+                                <p>{{contact.message}}</p>
+                                <span>{{contact.hour}}</span>
                             </div>
                         </div>
                     </main>
                     <!-- // SECTION CHAT // -->
 
-                    <!--// SECTION FOOTER CHAT // -->
+                    <!-- // SECTION FOOTER CHAT  -->
                     <footer class="footer-chat">
                         <div class="smile">
                             <i class="fa-regular fa-face-smile"></i>
@@ -132,13 +135,12 @@
                     </footer>
                     <!-- // SECTION FOOTER CHAT // -->
                 </div>
+                <!-- // SECTION MAIN CHAT // -->
             </main>
         </div>
     </div>
-    
-    <!-- TODO HOVER AND PART 2 MILESTONE 1-->
 
-   
+    
     <!-- LINK VUE.JS -->
     <script src='https://unpkg.com/vue@3/dist/vue.global.js'></script>
     <!-- LINK JAVASCRIPT -->
