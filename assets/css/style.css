@@ -7,8 +7,8 @@
 /* // SECTION SIDEBAR // */
 .main-wrapper {
     height: 100vh;
-    background: rgb(210,210,219);
-    background: linear-gradient( 0deg, rgba(219,219,210,1) 82%, rgba(0, 150,136,1) 82%);
+    background: #dbdbd2;
+    background: linear-gradient( 0deg, #dbdbd2 82%, #009688 82%);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -59,3 +59,53 @@
 }
 
 /* // SECTION PROFILE USER // */
+
+/* // SECTION ICONS // */
+.aside-icons {
+    font-size: 20px;
+    color: #b1b1b1;
+    cursor: pointer;
+}
+.icons {
+    padding-right: 15px;
+}
+
+/* // SECTION ICONS // */
+
+/* // SECTION NOTIFICATIONS // */
+.notifications {
+    height: 70px;
+    background-color: #8edafc;
+    display: flex;
+    align-items: center;
+}
+
+.bell i {
+    background-color: #f2fbff;
+    color: #8edafc;
+    border-radius: 50%;
+    font-size: 20px;
+    margin-left: 10px;
+    padding: 12px 10px;
+}
+
+.notifications .text {
+    display: flex;
+    flex-direction: column;
+    margin-left: 5px
+}
+
+.notifications .text span:first-child{
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.notifications .text span:last-child{
+    font-size: 14px;
+    color: #7c7c7c;
+    text-decoration: underline;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+/* // SECTION NOTIFICATIONS // */
