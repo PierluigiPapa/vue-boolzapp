@@ -47,7 +47,7 @@ li {
 /* // SECTION SIDEBAR // */
 
 /* // SECTION PROFILE USER // */
-.name-user {
+.header-user {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -64,7 +64,7 @@ li {
     margin-left: 10px;
 }
 
-.bold-name {
+.bold-user {
     font-weight: 600;
 }
 
@@ -215,7 +215,7 @@ li {
     justify-content: space-between;
 }
 
-.name {
+.user-info {
     padding-top: 10px;
 }
 

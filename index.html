@@ -19,10 +19,10 @@
                 <!-- // SECTION SIDEBAR //-->
                 <aside class="sidebar">
                     <!-- // SECTION PROFILE USER // -->
-                    <header class="name-user">
+                    <header class="header-user">
                         <div class="aside-image">
                             <img src="./assets/img/avatar_io.jpg" alt="">
-                            <span class="bold-name">Sofia</span>
+                            <span class="bold-user">Sofia</span>
                         </div>
 
                         <!--// SECTION ICONS // -->
@@ -59,16 +59,16 @@
                     <!-- // SECTION INPUT SEARCH // -->
                     
                     <!--// SECTION LIST USERS // -->
-                    <section class="list-users">
+                    <section class="list-users" v-for="contact in contacts">
                         <div class="user">
-                            <div class="col" v-for="contact in contacts">
+                            <div class="col">
                                 <div class="user-image">
-                                    <img :src="contact.avatar" alt="">
+                                    <img :src="contact.avatar">
                                 </div>
 
                                 <ul class="text-users">
                                     <li>{{contact.name}}</li>
-                                    <li>{{contact.messages[contact.messages.lenght-1].message}}</li>
+                                    <li>{{contact.messages[contact.messages.length - 1].message }}</li>
                                 </ul>
                             </div>
 
@@ -88,7 +88,7 @@
                         <div class="contact">
                             <div class="image-contact img-flex">
                                 <img src="./assets/img/avatar_1.jpg" alt="">
-                                <ul class="name">
+                                <ul class="user-info">
                                     <li>Michele</li>
                                     <li>Ultimo messaggio ore 12:00</li>
                                 </ul>
