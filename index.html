@@ -114,7 +114,9 @@
                             <div class="message"
                             :class="contact.status" 
                             v-for="contact in contacts[chatActive].messages">
-                                <p>{{contact.message}}</p>
+                                <p>{{contact.message}}
+                                    <i class="fa-solid fa-angle-down"></i>
+                                </p>
                                 <span>{{contact.date}}</span>
                             </div>
                         </div>

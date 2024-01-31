@@ -183,18 +183,13 @@ createApp({
                 message: this.msgNew,
                 status: 'sent'
             }
-
-        
             if(this.msgNew.length === 0){
                 console.warn('nessun messaggio');
             }else{
                 this.contacts[this.chatActive].messages.push(newObjMsg)
                 this.answer()
             }
-                
-
             this.msgInput = '';
-
         },
 
         answer(){
@@ -204,7 +199,6 @@ createApp({
                     message: 'Bravo! Hai completato il milestone 3',
                     status: 'received'
                 }
-
                 this.contacts[this.chatActive].messages.push(answer)
             }, 1000);
 
@@ -212,8 +206,6 @@ createApp({
     },
 
     computed:{
-       
-
         filteredContact(){
             return this.contacts.forEach(contact =>{
                 contact.visible = contact.name.toLowerCase().includes(this.searchBar.toLowerCase())
