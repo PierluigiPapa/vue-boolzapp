@@ -176,7 +176,6 @@ createApp({
         showContact(i){
             this.chatActive = i
         },
-
         newMsg(){
             const newObjMsg = {
                 date: '10/01/2020 16:48:00',
@@ -191,7 +190,6 @@ createApp({
             }
             this.msgInput = '';
         },
-
         answer(){
             setTimeout(() => {
                 const answer = {
@@ -204,7 +202,6 @@ createApp({
 
         }
     },
-
     computed:{
         filteredContact(){
             return this.contacts.forEach(contact =>{
@@ -212,5 +209,4 @@ createApp({
             })
         }
     }
-    
 }).mount('#app')
