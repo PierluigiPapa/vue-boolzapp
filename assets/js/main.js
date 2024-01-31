@@ -166,47 +166,59 @@ createApp({
                     ],
                 }
             ],
-            index: 0,
-            newMessage: "",
+            chatActive: 0,
+            msgNew: '',
+            searchBar : ''
         }
+
     },
     methods:{
         showContact(i){
-            this.index = i
+            this.chatActive = i
         },
-        
+
         newMsg(){
             const newObjMsg = {
-                date: this.getDate() + '' + this.getTime(),
-                message: this.newMessage,
+                date: '10/01/2020 16:48:00',
+                message: this.msgNew,
                 status: 'sent'
             }
 
-            if (this.newMessage.length === 0) {
-            } else {
-                this.contact[this.index].messages.push(newObjMsg)
+        
+            if(this.msgNew.length === 0){
+                console.warn('nessun messaggio');
+            }else{
+                this.contacts[this.chatActive].messages.push(newObjMsg)
                 this.answer()
             }
+                
 
-            this.newMessage = '';
+            this.msgInput = '';
+
         },
 
         answer(){
             setTimeout(() => {
                 const answer = {
-                    date: this.getDate() + '' + this.getTime(),
-                    message: 'OK!!',
+                    date: '10/01/2020 17:00:00',
+                    message: 'Bravo! Hai completato il milestone 3',
                     status: 'received'
                 }
 
-                this.contacts[this.index].messages.push (answer)
+                this.contacts[this.chatActive].messages.push(answer)
             }, 1000);
+
         }
     },
 
-    computed: {
-        
+    computed:{
+       
+
+        filteredContact(){
+            return this.contacts.forEach(contact =>{
+                contact.visible = contact.name.toLowerCase().includes(this.searchBar.toLowerCase())
+            })
+        }
     }
     
 }).mount('#app')
-

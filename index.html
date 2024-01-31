@@ -21,7 +21,7 @@
                     <!-- // SECTION PROFILE USER // -->
                     <header class="d-flex space-between items-center">
                         <div class="aside-image">
-                            <img src = "assets/img/avatar_io.jpg" alt="avatar_io">
+                            <img src="assets/img/avatar_io.jpg" alt="avatar_io">
                             <span class="bold">Sofia</span>
                         </div>
 
@@ -53,31 +53,32 @@
                             <i class="fa-solid fa-magnifying-glass"></i>
                         </div>
                         <div class="input">
-                            <input id="search-user" type="text" placeholder="Cerca o inizia una nuova chat">
+                            <input 
+                            id="search-user"
+                            v-model="searchBar" 
+                            @keyup="filteredContact" 
+                            placeholder="Cerca o inizia una nuova chat">
                         </div>
                     </div>
                     <!-- // SECTION INPUT SEARCH // -->
 
                     <!-- // SECTION LIST USERS // -->
                     <section class="list-users">
-                        <div
-                          class="user d-flex space-between"
-                          v-for= "(contact, userIndex) in contacts"
-                          @click="showContact(userIndex)">
-                            <div class="user-col d-flex items-center">
-                                <div class="user-image" >
-                                    <img :src ="contact.avatar">
-                                </div>
-                                <ul class="user-info ml-10">
-                                    <li>{{contact.name}}</li>
-                                    <li>{{contact.messages[contact.messages.length - 1].message }} </li>
-                                </ul>
-                            </div>
-                        
-                            <div class="hour">
-                                <span>{{contact.messages[contact.messages.length -1].date}}</span>
-                            </div>
-                        </div>
+                        <div v-for= "(contact, userIndex) in contacts" @click="showContact(userIndex)">
+                          <div v-if="contact.visible" class="user d-flex items-center space-between mb-10">
+                              <div class="user-image d-flex items-center space-between" >
+                                  <img :src = "contact.avatar">
+                                  <ul v-if="contact.visible" class="user-info ml-10 ">
+                                      <li>{{contact.name}}</li>
+                                      <li> {{contact.messages[contact.messages.length - 1].message }} </li>
+                                  </ul>
+                              </div>
+                              <div v-if="contact.visible" class="hour">
+                                  <span>{{contact.messages[contact.messages.length -1].date}}</span>
+                              </div>
+                          </div>
+
+                      </div>
                     </section>
                     <!-- // SECTION LIST USERS // -->
                 </aside>
@@ -90,9 +91,9 @@
                     <header class="d-flex space-between items-center">
                         <div class="contact d-flex space-between">
                             <div class="contact-image d-flex">
-                                <img :src = "contacts[index].avatar" alt="avatar_io">
+                                <img :src ="contacts[chatActive].avatar" alt="avatar_io">
                                 <ul class="pl-10">
-                                    <li>{{contacts[index].name}}</li>
+                                    <li>{{contacts[chatActive].name}}</li>
                                     <li>Ultimo accesso oggi alle 12:00</li>
                                 </ul>
                             </div>
@@ -112,7 +113,7 @@
                         <div class="chat-messages d-flex flex-col">
                             <div class="message"
                             :class="contact.status" 
-                            v-for="contact in contacts[index].messages">
+                            v-for="contact in contacts[chatActive].messages">
                                 <p>{{contact.message}}</p>
                                 <span>{{contact.date}}</span>
                             </div>
@@ -127,11 +128,7 @@
                         </div>
                         
                         <div class="input-message">
-                            <input 
-                            v-model="newMessage" 
-                            type="text" 
-                            @keyup.enter="newMsg"
-                            placeholder="Scrivi un messaggio">
+                            <input v-model="msgNew" type="text" @keyup.enter="newMsg()"  type="text" placeholder="Scrivi un messaggio">
                         </div>
 
                         <div class="microphone">
@@ -145,6 +142,7 @@
         </div>
     </div>
 
+    <!-- TODO MILESTONE 5 OPZIONALE -->
 
     <!-- LINK VUE.JS -->
     <script src='https://unpkg.com/vue@3/dist/vue.global.js'></script>
