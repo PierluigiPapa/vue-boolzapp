@@ -159,7 +159,7 @@ createApp({
                             status: 'sent'
                         },
                         {
-                             date: '10/01/2020 15:51:00',
+                            date: '10/01/2020 15:51:00',
                             message: 'OK!!',
                             status: 'received'
                         }
@@ -167,14 +167,46 @@ createApp({
                 }
             ],
             index: 0,
+            newMessage: "",
         }
-
     },
     methods:{
         showContact(i){
             this.index = i
+        },
+        
+        newMsg(){
+            const newObjMsg = {
+                date: this.getDate() + '' + this.getTime(),
+                message: this.newMessage,
+                status: 'sent'
+            }
+
+            if (this.newMessage.length === 0) {
+            } else {
+                this.contact[this.index].messages.push(newObjMsg)
+                this.answer()
+            }
+
+            this.newMessage = '';
+        },
+
+        answer(){
+            setTimeout(() => {
+                const answer = {
+                    date: this.getDate() + '' + this.getTime(),
+                    message: 'OK!!',
+                    status: 'received'
+                }
+
+                this.contacts[this.index].messages.push (answer)
+            }, 1000);
         }
     },
+
+    computed: {
+        
+    }
     
 }).mount('#app')
 

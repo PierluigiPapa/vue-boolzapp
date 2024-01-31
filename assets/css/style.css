@@ -258,13 +258,13 @@ li{
 
 .chat-messages .message.received{
     align-self: flex-start;
-    background-color: #fff;
+    background-color: white;
 }
 
 .chat-messages .message span{
     font-size: 10px;
     font-weight: bold;
-    color: rgb(181, 181, 181);
+    color: #b5b5b5;
     position: absolute;
     bottom: 10px;
     right: 10px;

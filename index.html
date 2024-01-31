@@ -111,7 +111,8 @@
                     <main class="chat-main">
                         <div class="chat-messages d-flex flex-col">
                             <div class="message"
-                            :class="contact.status" v-for="contact in contacts[index].messages">
+                            :class="contact.status" 
+                            v-for="contact in contacts[index].messages">
                                 <p>{{contact.message}}</p>
                                 <span>{{contact.date}}</span>
                             </div>
@@ -126,7 +127,11 @@
                         </div>
                         
                         <div class="input-message">
-                            <input type="text" placeholder="Scrivi un messaggio">
+                            <input 
+                            v-model="newMessage" 
+                            type="text" 
+                            @keyup.enter="newMsg"
+                            placeholder="Scrivi un messaggio">
                         </div>
 
                         <div class="microphone">
