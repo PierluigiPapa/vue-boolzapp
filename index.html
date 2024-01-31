@@ -75,7 +75,7 @@
                             </div>
                         
                             <div class="hour">
-                                <span>12:00</span>
+                                <span>{{contact.messages[contact.messages.length -1].date}}</span>
                             </div>
                         </div>
                     </section>
@@ -113,7 +113,7 @@
                             <div class="message"
                             :class="contact.status" v-for="contact in contacts[index].messages">
                                 <p>{{contact.message}}</p>
-                                <span>{{contact.hour}}</span>
+                                <span>{{contact.date}}</span>
                             </div>
                         </div>
                     </main>
