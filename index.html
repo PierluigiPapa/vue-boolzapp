@@ -84,7 +84,6 @@
                 </aside>
                 <!-- // SECTION SIDEBAR // -->
                 
-
                 <!-- // SECTION MAIN CHAT // -->
                 <div class="chat">
                     <!-- // SECTION HEADER CHAT // -->
@@ -112,13 +111,21 @@
                     <main class="chat-main">
                         <div class="chat-messages d-flex flex-col">
                             <div class="message"
-                            :class="contact.status" 
-                            v-for="contact in contacts[chatActive].messages">
-                                <p>{{contact.message}}
-                                    <i class="fa-solid fa-angle-down"></i>
-                                </p>
-                                <span>{{contact.date}}</span>
+                                :class="contact.status"
+                                v-for="(contact, messageIndex) in contacts[chatActive].messages"
+                                :key="messageIndex"
+                                @mouseenter="showPopup(messageIndex)"
+                                @mouseleave="hidePopup(messageIndex)">
+                                <div class="message-container">
+                                    <div class="message-content">
+                                        {{contact.message}}
+                                        <i class="fa-solid fa-angle-down" @click="showPopup(messageIndex)"></i>
+                                        <div v-if="activePopup === messageIndex" class="popup delete-message" ref="popup">
+                                        <div @click="confirmDelete(messageIndex)">Cancella messaggio</div>
+                                    </div>
+                                </div>
                             </div>
+                            <span>{{contact.date}}</span>
                         </div>
                     </main>
                     <!-- // SECTION CHAT // -->

@@ -186,6 +186,16 @@ createApp({
         showContact(i){
             this.chatActive = i
         },
+        showPopup(messageIndex) {
+            this.activePopup = messageIndex;
+        },
+        hidePopup(messageIndex) {
+            this.activePopup = null;
+        },
+        confirmDelete(messageIndex) {
+            this.contacts[this.chatActive].messages.splice(messageIndex, 1);
+            this.activePopup = null;
+        },
         newMsg(){
             const newObjMsg = {
                 date: this.dataCorrente(),
