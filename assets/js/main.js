@@ -168,7 +168,8 @@ createApp({
             ],
             chatActive: 0,
             msgNew: '',
-            searchBar : ''
+            searchBar : '',
+            activePopup: null,
         }
 
     },

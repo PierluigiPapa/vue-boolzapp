@@ -121,11 +121,12 @@
                                         {{contact.message}}
                                         <i class="fa-solid fa-angle-down" @click="showPopup(messageIndex)"></i>
                                         <div v-if="activePopup === messageIndex" class="popup delete-message" ref="popup">
-                                        <div @click="confirmDelete(messageIndex)">Cancella messaggio</div>
+                                            <div @click="confirmDelete(messageIndex)">Cancella messaggio</div>
+                                        </div>
                                     </div>
                                 </div>
+                                <span>{{contact.date}}</span>
                             </div>
-                            <span>{{contact.date}}</span>
                         </div>
                     </main>
                     <!-- // SECTION CHAT // -->
