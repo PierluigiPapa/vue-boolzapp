@@ -173,17 +173,26 @@ createApp({
 
     },
     methods:{
+        dataCorrente() {
+            const now = new Date();
+            const giorno = ('0' + now.getDate());
+            const mese = ('0' + (now.getMonth()));
+            const anno = now.getFullYear();
+            const ore = ('0' + now.getHours()).slice(-2);
+            const minuti = ('0' + now.getMinutes()).slice(-2);
+            const secondi = ('0' + now.getSeconds()).slice(-2);
+            return `${giorno}/${mese}/${anno} ${ore}:${minuti}:${secondi}`;
+        },
         showContact(i){
             this.chatActive = i
         },
         newMsg(){
             const newObjMsg = {
-                date: '10/01/2020 16:48:00',
+                date: this.dataCorrente(),
                 message: this.msgNew,
                 status: 'sent'
             }
             if(this.msgNew.length === 0){
-                console.warn('nessun messaggio');
             }else{
                 this.contacts[this.chatActive].messages.push(newObjMsg)
                 this.answer()
@@ -193,7 +202,7 @@ createApp({
         answer(){
             setTimeout(() => {
                 const answer = {
-                    date: '10/01/2020 17:00:00',
+                    date: this.dataCorrente(),
                     message: 'Bravo! Hai completato il milestone 3',
                     status: 'received'
                 }

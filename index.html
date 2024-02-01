@@ -64,10 +64,10 @@
 
                     <!-- // SECTION LIST USERS // -->
                     <section class="list-users">
-                        <div v-for= "(contact, userIndex) in contacts" @click="showContact(userIndex)">
+                        <div v-for="(contact, userIndex) in contacts" @click="showContact(userIndex)">
                           <div v-if="contact.visible" class="user d-flex items-center space-between mb-10">
                               <div class="user-image d-flex items-center space-between" >
-                                  <img :src = "contact.avatar">
+                                  <img :src ="contact.avatar">
                                   <ul v-if="contact.visible" class="user-info ml-10 ">
                                       <li>{{contact.name}}</li>
                                       <li> {{contact.messages[contact.messages.length - 1].message }} </li>
